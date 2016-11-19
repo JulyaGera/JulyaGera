@@ -1,0 +1,61 @@
+#include <iostream>
+#include <conio.h>
+//#include <cstdio>
+
+using namespace std;
+
+char name[10][80];
+float hours[10];
+float wage[10];
+
+int menu();
+void enter(), report();
+int main()
+{
+	setlocale(LC_ALL, "Russsian");
+
+	int choice;
+	do {
+		choice = menu();
+		switch (choice) {
+		case 0: break;
+		case 1: enter(); break;
+		case 2: report();break;
+		dafault: cout << "Попробуйте еще раз.\n\n";
+		}
+	} while (choice != 0);
+	return 0;
+}
+
+int menu()
+{
+	int choice;
+	cout << "0. Выход из программы\n";
+	cout << "1. Ввoд информации\n";
+	cout << "2. Генерирование отчета\n";
+	cout << "\nВыберите команду: ";
+	cin >> choice;
+	return choice;
+}
+
+void enter()
+{
+	int i;
+	char temp[80];
+	for (i = 0; i < 3; i++) {
+		cout << "Введите фамилию: ";
+		cin >>name[i];
+		cout << "Введите количество отработанных часов:";
+		cin >> hours[i];
+		cout << "Введите оклад: ";
+		cin >> wage[i];
+	}
+}
+void report()
+{
+	int i;
+	for (i = 0;i < 10; i++) {
+		cout << name[i] << endl;;
+		cout << "Заработанная плата за неделю: " << wage[i] * hours[i] << '\n';
+	}
+}
